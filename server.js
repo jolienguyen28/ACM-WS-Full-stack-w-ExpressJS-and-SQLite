@@ -1,14 +1,23 @@
+// Importing the Express framework for building web applications
 const express = require('express');
+// Importing body-parser to parse incoming request bodies in a middleware
 const bodyParser = require('body-parser');
+// Importing SQLite3 with verbose mode for additional debug information
 const sqlite3 = require('sqlite3').verbose();
+// Importing CORS middleware to enable Cross-Origin Resource Sharing
 const cors = require('cors');
+// Importing the built-in file system module to work with the file system
 const fs = require('fs');
+// Importing a custom setup function for Swagger documentation
 const setupSwagger = require('./swagger');
-
+// Creating an instance of Express
 const app = express();
+// Setting the port number the server will listen on
 const port = 3000;
 
+// Using body-parser middleware to parse JSON requests
 app.use(bodyParser.json());
+// Using CORS middleware to allow cross-origin requests
 app.use(cors());
 
 // Serve static files from the "public" directory
@@ -156,6 +165,7 @@ app.delete('/api/users/:id', (req, res) => {});
 
 app.put('/api/users/:id', (req, res) => {});
 
+// Starting the Express server and making it listen on the specified port
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
